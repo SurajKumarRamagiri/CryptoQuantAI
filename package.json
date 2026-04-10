@@ -1,0 +1,20 @@
+{
+  "name": "driftforge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DriftForge - Crypto Trading Simulation Web App",
+  "scripts": {
+    "dev": "pnpm --parallel --filter frontend dev",
+    "dev:frontend": "pnpm --dir frontend dev",
+    "dev:backend": "python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000 --app-dir backend",
+    "validate-contracts": "pnpm --dir contracts run check",
+    "test-frontend": "pnpm --dir frontend run test",
+    "test-backend": "python -m pytest backend/tests",
+    "test-integration": "python -m pytest backend/tests -m integration",
+    "test-e2e": "pnpm --dir frontend run test:e2e:responsive",
+    "test-model-parity": "python -m pytest backend/tests -m parity",
+    "scan-security": "pnpm --dir frontend run scan:deps ; python -m pip_audit -r backend/requirements.txt",
+    "build-images": "docker build -t driftforge-backend:ci backend",
+    "gate-evidence-publish": "node contracts/scripts/publish-gate-evidence.mjs"
+  }
+}

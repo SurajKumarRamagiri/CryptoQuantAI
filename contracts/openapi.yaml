@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: DriftForge API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/v1/auth/register:
+    post:
+      summary: Register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+      responses:
+        "200":
+          description: Success
+  /api/v1/auth/login:
+    post:
+      summary: Login
+      responses:
+        "200": { description: Success }
+  /api/v1/market/symbols:
+    get:
+      summary: Symbols
+      responses:
+        "200": { description: Success }
+  /api/v1/orders:
+    post:
+      summary: Create order
+      responses:
+        "200": { description: Success }
+    get:
+      summary: List orders
+      responses:
+        "200": { description: Success }
+  /api/v1/portfolio:
+    get:
+      summary: Get portfolio
+      responses:
+        "200": { description: Success }
+  /api/v1/models/predict/{model_name}:
+    post:
+      summary: Predict
+      parameters:
+        - in: path
+          name: model_name
+          required: true
+          schema: { type: string }
+      responses:
+        "200": { description: Success }
+  /api/v1/research/analysis:
+    get:
+      summary: Analysis
+      responses:
+        "200": { description: Success }

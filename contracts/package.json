@@ -1,0 +1,11 @@
+{
+  "name": "contracts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-openapi.mjs"
+  },
+  "dependencies": {
+    "yaml": "2.6.0"
+  }
+}
