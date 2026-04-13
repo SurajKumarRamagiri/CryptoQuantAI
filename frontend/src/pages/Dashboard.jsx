@@ -65,7 +65,7 @@ export default function Dashboard() {
   }, [availableHorizons])
   
   return (
-    <div className="min-h-screen bg-[#0B0F14] flex flex-col text-white selection:bg-[#3B82F6] selection:text-white">
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col text-white selection:bg-[var(--color-primary)] selection:text-white">
       <TopBar />
       
       <main className="flex-1 flex flex-col">
@@ -80,10 +80,10 @@ export default function Dashboard() {
           timeframes={availableHorizons}
         />
         
-        <div className="container mx-auto max-w-[1600px] flex flex-col gap-8 p-8">
+        <div className="container mx-auto max-w-[1600px] flex flex-col gap-6 md:gap-8 p-4 md:p-8">
           <MarketStats asset={selectedAsset} timeframe={timeframe} />
           
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
             <ChartSection asset={selectedAsset} timeframe={timeframe} />
             <SignalPanel asset={selectedAsset} timeframe={timeframe} model={selectedModel} />
           </div>
@@ -101,12 +101,12 @@ export default function Dashboard() {
         </div>
       </main>
       
-      <footer className="py-6 px-8 border-t border-[#2D3748] flex justify-between items-center text-[10px] text-[#4B5563] font-bold uppercase tracking-widest bg-[#0B0F14]">
+      <footer className="py-6 px-8 border-t border-[var(--color-border)] flex justify-between items-center text-[10px] text-[var(--color-text-muted)] font-bold uppercase tracking-widest bg-[var(--color-bg)]">
         <div>© 2025 CryptoQuant AI</div>
         <div className="flex items-center gap-6">
-           <a href="#" className="hover:text-[#9CA3AF]">API Status: Normal</a>
-           <a href="#" className="hover:text-[#9CA3AF]">Support</a>
-           <a href="#" className="hover:text-[#9CA3AF]">Terms</a>
+           <a href="#" className="hover:text-[var(--color-neutral)]">API Status: Normal</a>
+           <a href="#" className="hover:text-[var(--color-neutral)]">Support</a>
+           <a href="#" className="hover:text-[var(--color-neutral)]">Terms</a>
         </div>
       </footer>
     </div>

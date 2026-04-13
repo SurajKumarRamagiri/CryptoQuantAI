@@ -106,7 +106,7 @@ class ModelRegistry:
             return Path(settings.artifact_dir)
 
         project_root = Path(__file__).resolve().parents[3]
-        return project_root.parent.parent / "notebooks" / "CryptoOutput (1)" / "models"
+        return project_root / "models"
 
     def _parse_filename(self, model_path: Path) -> ModelArtifact | None:
         parts = model_path.stem.split("_")

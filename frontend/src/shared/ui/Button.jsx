@@ -8,11 +8,11 @@ export default function Button({
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 cursor-pointer'
   
   const variants = {
-    primary: 'btn-primary text-white hover:bg-primary-hover',
-    secondary: 'bg-[#121821] text-[#9CA3AF] border border-[#2D3748] hover:bg-[#1A2332] hover:text-white',
-    success: 'btn-success text-white hover:bg-[#16A34A]',
-    danger: 'btn-danger text-white hover:bg-[#DC2626]',
-    ghost: 'bg-transparent text-[#9CA3AF] hover:bg-[#121821] hover:text-white'
+    primary: 'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]',
+    secondary: 'bg-[var(--color-card)] text-[var(--color-neutral)] border border-[var(--color-border)] hover:bg-[var(--color-accent)] hover:text-white',
+    success: 'bg-[var(--color-success)] text-white hover:bg-[var(--color-success)]',
+    danger: 'bg-[var(--color-danger)] text-white hover:bg-[var(--color-danger)]',
+    ghost: 'bg-transparent text-[var(--color-neutral)] hover:bg-[var(--color-card)] hover:text-white'
   }
   
   // Ensure touch targets meet recommended minimums (44x44px)

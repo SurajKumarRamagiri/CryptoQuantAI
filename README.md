@@ -9,16 +9,20 @@ Contents
 - `context/`, `contracts/`, `db/`, `tests/` — supporting artifacts and documentation
 
 Quick start (development)
-1. Install dependencies
+1. Environment Setup:
+   - Copy `.env.example` to `.env` in the root folder.
+   - Set `DATABASE_URL` to a valid Supabase PostgreSQL connection string (**Required:** The backend will instantly crash without this).
+   - Ensure you manually download the model binaries into the `models/` directory in the project root (these are not tracked by Git).
+2. Install dependencies:
    - Frontend: `pnpm --dir frontend install`
-   - Backend: `pip install -r backend/requirements.txt`
-2. Start backend (from repo root):
-   - `cd backend` then `python -m uvicorn app.main:app --reload --port 8000`
-3. Start frontend (from repo root):
-   - `pnpm --dir frontend dev`
+   - Backend: Activate a virtual environment, then run `pip install -r backend/requirements.txt`
+3. Start the application (from repo root):
+   - The easiest way is to run `python start_dev.py` which launches both services.
+   - Or start manually: `cd backend && python -m uvicorn app.main:app --reload --port 8000` and `pnpm --dir frontend dev`.
 
 Environment variables
-- `DATABASE_URL` — required by backend PersistentStore (Supabase Postgres connection string expected)
+- `DATABASE_URL` — **CRITICAL**: Required by backend PersistentStore (Supabase Postgres connection string expected).
+- `REDIS_URL` — Local docker reference. Not actively used by the local IDE python backend.
 - `CORS_ORIGINS` — comma separated origins allowed by CORS (frontend dev ports are included by default)
 - `VITE_API_BASE_URL`, `VITE_WS_BASE_URL` — used by frontend when running against non-default backend
 
@@ -34,9 +38,9 @@ Architecture (high level)
   - `backend/app/core/store.py` — persistent store, paper trading helpers, short price cache
 
 Model artifact conventions
-- Directory: by default the registry looks under a notebook/models path; set `ARTIFACT_DIR` in settings to override.
+- Directory: By default the registry looks in the `models/` folder at the root of the project.
 - Filename pattern: `<SYMBOL>_<TIMEFRAME>_<MODELKEY>.<ext>` — example `BTC_15m_xgb.joblib` or `BTC_15m_gru.pt`.
-- Supported artifact extensions: `.joblib` for scikit/xgboost/rf, `.pt` / `.pth` for PyTorch RNN models.
+- Supported artifact extensions: `.joblib` for scikit-learn/xgboost/rf, `.pt` / `.pth` for PyTorch RNN models.
 - Scaler naming (optional): `<SYMBOL>_<TIMEFRAME>_scaler.joblib` or model‑specific scaler variations. If present the scaler will be applied before ML prediction.
 - Hybrid models: a joblib artifact with model_name `hybrid-gru-xgboost` is paired with a corresponding GRU torch artifact (named with `hybrid_gru` key) — registry fuses probabilities (average + renormalize).
 

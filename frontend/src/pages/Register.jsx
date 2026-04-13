@@ -41,9 +41,9 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] flex flex-col md:flex-row selection:bg-[#3B82F6] selection:text-white">
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col md:flex-row selection:bg-[#3B82F6] selection:text-white">
       {/* Left: Value Prop (Desktop only) */}
-      <div className="hidden md:flex md:w-1/2 bg-[#121821] border-r border-[#2D3748] p-16 flex-col justify-center">
+      <div className="hidden md:flex md:w-1/2 bg-[var(--color-card)] border-r border-[var(--color-border)] p-16 flex-col justify-center">
         <Link to="/" className="absolute top-8 left-8 text-xl font-bold tracking-tight text-white">
           CryptoQuant<span className="text-[#3B82F6]">AI</span>
         </Link>
@@ -55,21 +55,21 @@ export default function Register() {
               <CheckCircle2 className="text-[#22C55E] shrink-0 mt-1" size={20} />
               <div>
                 <h4 className="font-bold text-white">Institutional Grade AI</h4>
-                <p className="text-sm text-[#9CA3AF] mt-1">Access models previously only available to high-frequency hedge funds.</p>
+                <p className="text-sm text-[var(--color-neutral)] mt-1">Access models previously only available to high-frequency hedge funds.</p>
               </div>
             </li>
             <li className="flex gap-4 items-start">
               <CheckCircle2 className="text-[#22C55E] shrink-0 mt-1" size={20} />
               <div>
                 <h4 className="font-bold text-white">Zero Latency Signals</h4>
-                <p className="text-sm text-[#9CA3AF] mt-1">Get immediate BUY/SELL alerts across 3 major cryptocurrencies.</p>
+                <p className="text-sm text-[var(--color-neutral)] mt-1">Get immediate BUY/SELL alerts across 3 major cryptocurrencies.</p>
               </div>
             </li>
             <li className="flex gap-4 items-start">
               <CheckCircle2 className="text-[#22C55E] shrink-0 mt-1" size={20} />
               <div>
                 <h4 className="font-bold text-white">Risk Managed Ideas</h4>
-                <p className="text-sm text-[#9CA3AF] mt-1">Every trade comes with clear Take Profit and Stop Loss levels.</p>
+                <p className="text-sm text-[var(--color-neutral)] mt-1">Every trade comes with clear Take Profit and Stop Loss levels.</p>
               </div>
             </li>
           </ul>
@@ -78,14 +78,14 @@ export default function Register() {
 
       {/* Right: Register Form */}
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-8 relative">
-        <Link to="/" className="md:hidden absolute top-8 left-8 text-[#9CA3AF] hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
+        <Link to="/" className="md:hidden absolute top-8 left-8 text-[var(--color-neutral)] hover:text-white transition-colors flex items-center gap-2 text-sm font-medium">
           <ArrowLeft size={16} /> Back
         </Link>
         
         <div className="w-full max-w-sm">
           <div className="text-center md:text-left mb-10">
             <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Create Account</h1>
-            <p className="text-[#9CA3AF]">Start trading smarter today.</p>
+            <p className="text-[var(--color-neutral)]">Start trading smarter today.</p>
           </div>
           
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -121,12 +121,12 @@ export default function Register() {
               {loading ? 'Creating account...' : 'Create Free Account'}
             </Button>
             
-            <p className="text-xs text-[#4B5563] text-center leading-relaxed">
+            <p className="text-xs text-[var(--color-text-muted)] text-center leading-relaxed">
               By creating an account, you agree to our <a href="#" className="underline">Terms of Service</a> and <a href="#" className="underline">Privacy Policy</a>.
             </p>
           </form>
           
-          <p className="text-center mt-8 text-sm text-[#9CA3AF]">
+          <p className="text-center mt-8 text-sm text-[var(--color-neutral)]">
             Already have an account? <Link to="/login" className="text-[#3B82F6] font-bold hover:underline underline-offset-4">Login</Link>
           </p>
         </div>

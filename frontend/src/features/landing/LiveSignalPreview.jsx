@@ -24,10 +24,10 @@ export default function LiveSignalPreview() {
             <Zap className="w-4 h-4 text-[#3B82F6]" />
             <span className="text-sm font-medium text-[#3B82F6]">Live Data</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl py-8 font-bold text-white mb-6">
             Real-Time Signals
           </h2>
-          <p className="text-lg md:text-xl text-[#9CA3AF] max-w-2xl mx-auto text-center leading-relaxed">
+          <p className="text-lg md:text-xl text-[var(--color-neutral)] max-w-2xl mx-auto text-center leading-relaxed py-8">
             Watch our AI analyze markets in real-time. Select a timeframe to see predictions across BTC, ETH, and SOL.
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function LiveSignalPreview() {
                 className={`px-8 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   timeframe === tf 
                     ? 'bg-[#3B82F6] text-white shadow-lg shadow-[#3B82F6]/20' 
-                    : 'text-[#6B7280] hover:text-white hover:bg-[#1A2332]'
+                    : 'text-[var(--color-neutral-dark)] hover:text-white hover:bg-[var(--color-accent)]'
                 }`}
               >
                 {tf}
@@ -71,19 +71,19 @@ export default function LiveSignalPreview() {
                   <div className="flex flex-col items-center mb-10">
                     <div className="flex items-center gap-3 mb-3">
                       <h3 className="text-3xl font-bold text-white">{asset}</h3>
-                      <span className="text-sm text-[#6B7280]">/USDT</span>
+                      <span className="text-sm text-[var(--color-neutral-dark)]">/USDT</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-[#6B7280]">
+                    <div className="flex items-center gap-2 text-sm text-[var(--color-neutral-dark)]">
                       <Activity className="w-4 h-4" />
                       <span>Live Feed</span>
                     </div>
                   </div>
                   <div className={`p-4 rounded-2xl mx-auto w-fit mb-8 ${
-                    isBuy ? 'bg-[#22C55E]/10' : isSell ? 'bg-[#EF4444]/10' : 'bg-[#6B7280]/10'
+                    isBuy ? 'bg-[var(--color-success)]/10' : isSell ? 'bg-[var(--color-danger)]/10' : 'bg-[var(--color-neutral-dark)]/10'
                   }`}>
-                    {isBuy ? <TrendingUp className="w-8 h-8 text-[#22C55E]" /> : 
-                     isSell ? <TrendingDown className="w-8 h-8 text-[#EF4444]" /> : 
-                     <Activity className="w-8 h-8 text-[#6B7280]" />}
+                    {isBuy ? <TrendingUp className="w-8 h-8 text-[var(--color-success)]" /> : 
+                     isSell ? <TrendingDown className="w-8 h-8 text-[var(--color-danger)]" /> : 
+                     <Activity className="w-8 h-8 text-[var(--color-neutral-dark)]" />}
                   </div>
                 </div>
 
@@ -91,14 +91,14 @@ export default function LiveSignalPreview() {
                   {/* Signal type */}
                   <div className="mb-8 flex justify-center">
                     <div className={`inline-flex items-center gap-2 px-6 py-3 rounded-full ${
-                      isBuy ? 'bg-[#22C55E]/10 text-[#22C55E]' : 
-                      isSell ? 'bg-[#EF4444]/10 text-[#EF4444]' : 
-                      'bg-[#6B7280]/10 text-[#6B7280]'
+                      isBuy ? 'bg-[var(--color-success)]/10 text-[var(--color-success)]' : 
+                      isSell ? 'bg-[var(--color-danger)]/10 text-[var(--color-danger)]' : 
+                      'bg-[var(--color-neutral-dark)]/10 text-[var(--color-neutral-dark)]'
                     }`}>
                       <span className={`w-2 h-2 rounded-full ${
-                        isBuy ? 'bg-[#22C55E]' : 
-                        isSell ? 'bg-[#EF4444]' : 
-                        'bg-[#6B7280]'
+                        isBuy ? 'bg-[var(--color-success)]' : 
+                        isSell ? 'bg-[var(--color-danger)]' : 
+                        'bg-[var(--color-neutral-dark)]'
                       } ${isBuy ? 'animate-pulse' : ''}`} />
                       <span className="text-base font-bold uppercase tracking-wider">{signal.type}</span>
                     </div>
@@ -107,15 +107,15 @@ export default function LiveSignalPreview() {
                   {/* Confidence bar */}
                   <div className="mb-8">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-base text-[#6B7280]">Confidence</span>
+                      <span className="text-base text-[var(--color-neutral-dark)]">Confidence</span>
                       <span className="text-xl font-bold text-white">{signal.conf}%</span>
                     </div>
                     <div className="h-3 bg-[#0B0F14] rounded-full overflow-hidden">
                       <div 
                         className={`h-full rounded-full transition-all duration-1000 ${
-                          isBuy ? 'bg-gradient-to-r from-[#22C55E] to-[#16A34A]' : 
-                          isSell ? 'bg-gradient-to-r from-[#EF4444] to-[#DC2626]' : 
-                          'bg-[#6B7280]'
+                          isBuy ? 'bg-gradient-to-r from-[var(--color-success)] to-[#16A34A]' : 
+                          isSell ? 'bg-gradient-to-r from-[var(--color-danger)] to-[#DC2626]' : 
+                          'bg-[var(--color-neutral-dark)]'
                         }`}
                         style={{ width: `${signal.conf}%` }}
                       />
@@ -125,7 +125,7 @@ export default function LiveSignalPreview() {
                   {/* Price */}
                   <div className="pt-6 border-t border-[#2D3748]/50">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-[#6B7280]">Current Price</span>
+                      <span className="text-sm text-[var(--color-neutral-dark)]">Current Price</span>
                       <span className="text-xl font-bold text-white">${signal.price.toLocaleString()}</span>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export default function LiveSignalPreview() {
         </div>
 
         {/* Last updated indicator */}
-        <div className="flex items-center justify-center gap-3 mt-12 text-sm text-[#6B7280]">
+        <div className="flex items-center justify-center gap-3 mt-12 text-sm text-[var(--color-neutral-dark)]">
           <Clock className="w-4 h-4" />
           <span>Signals update every 15 seconds</span>
           <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />

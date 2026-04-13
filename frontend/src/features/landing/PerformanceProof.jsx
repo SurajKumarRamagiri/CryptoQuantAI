@@ -31,14 +31,14 @@ export default function PerformanceProof() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Performance That Speaks
           </h2>
-          <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto text-center leading-relaxed">
+          <p className="text-lg text-[var(--color-neutral)] px-5 py-8 max-w-2xl mx-auto text-center leading-relaxed">
             Backtested with rigorous methodology. Verified in real trading. 
             Join thousands of traders who trust CryptoQuantAI.
           </p>
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => (
             <div 
               key={index}
@@ -50,7 +50,7 @@ export default function PerformanceProof() {
                 </div>
                 <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-sm font-semibold text-white mb-1">{stat.label}</div>
-                <div className="text-xs text-[#6B7280]">{stat.sub}</div>
+                <div className="text-xs text-[var(--color-neutral-dark)]">{stat.sub}</div>
               </div>
             </div>
           ))}
@@ -65,11 +65,11 @@ export default function PerformanceProof() {
             <div className="flex flex-col lg:flex-row items-center justify-between mb-8 gap-4">
               <div className="text-center lg:text-left">
                 <h3 className="text-xl font-bold text-white mb-1">Portfolio Performance</h3>
-                <p className="text-sm text-[#6B7280]">Hypothetical $10,000 investment (backtested)</p>
+                <p className="text-sm text-[var(--color-neutral-dark)]">Hypothetical $10,000 investment (backtested)</p>
               </div>
               <div className="text-center lg:text-right">
                 <div className="text-3xl font-bold text-[#22C55E]">+247%</div>
-                <div className="text-sm text-[#6B7280]">12 month return</div>
+                <div className="text-sm text-[var(--color-neutral-dark)]">12 month return</div>
               </div>
             </div>
 
@@ -120,7 +120,7 @@ export default function PerformanceProof() {
 
         {/* Testimonials */}
         <div className="mb-12">
-          <h3 className="text-2xl font-bold text-white text-center mb-12">Trusted by Traders Worldwide</h3>
+          <h3 className="text-2xl font-bold text-white text-center py-8 mb-12">Trusted by Traders Worldwide</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <div 
@@ -133,10 +133,10 @@ export default function PerformanceProof() {
                   </div>
                   <div>
                     <div className="font-semibold text-white">{testimonial.name}</div>
-                    <div className="text-sm text-[#6B7280]">{testimonial.role}</div>
+                    <div className="text-sm text-[var(--color-neutral-dark)]">{testimonial.role}</div>
                   </div>
                 </div>
-                <p className="text-[#9CA3AF] italic text-center">"{testimonial.text}"</p>
+                <p className="text-[var(--color-neutral)] italic text-center">"{testimonial.text}"</p>
               </div>
             ))}
           </div>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import Button from '../../shared/ui/Button'
 
 export default function FinalCTA() {
   const benefits = [
@@ -21,7 +22,7 @@ export default function FinalCTA() {
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Start Trading Smarter Today
           </h2>
-          <p className="text-xl text-[#9CA3AF] max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-[var(--color-neutral)] max-w-2xl mx-auto py-8 mb-8">
             Join 10,000+ traders using AI to navigate market complexity with precision and confidence.
           </p>
         </div>
@@ -29,7 +30,7 @@ export default function FinalCTA() {
         {/* Benefits */}
         <div className="flex flex-wrap justify-center gap-6 mb-12">
           {benefits.map((benefit, index) => (
-            <div key={index} className="flex items-center gap-2 text-[#9CA3AF]">
+            <div key={index} className="flex items-center gap-2 text-[var(--color-neutral)]">
               <CheckCircle2 className="w-5 h-5 text-[#22C55E]" />
               <span>{benefit}</span>
             </div>
@@ -38,19 +39,16 @@ export default function FinalCTA() {
 
         {/* CTA Buttons */}
         <div className="flex justify-center">
-          <Link 
-            to="/register"
-            className="group relative px-10 py-5 bg-[#3B82F6] hover:bg-[#2563EB] text-white rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-[#3B82F6]/30 hover:scale-[1.02]"
-          >
-            <span className="flex items-center gap-3">
+          <Button size="lg" variant="primary" className="group relative px-8 hover:shadow-2xl hover:shadow-[var(--color-primary)]/30 hover:scale-[1.02]">
+            <Link to="/register" className="flex items-center gap-2 text-white">
               Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
-          </Link>
+            </Link>
+          </Button>
         </div>
 
         {/* Trust message */}
-        <p className="mt-8 text-sm text-[#6B7280]">
+        <p className="mt-8 py-8 text-sm text-[var(--color-neutral-dark)]">
           Trusted by traders from 50+ countries
         </p>
       </div>

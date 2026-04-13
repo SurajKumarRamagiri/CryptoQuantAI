@@ -73,13 +73,13 @@ export default function MarketStats({ asset, timeframe }) {
   return (
     <div className="px-8 py-6 grid grid-cols-2 md:grid-cols-4 gap-8">
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-[#4B5563]">
+        <div className="flex items-center gap-2 text-[var(--color-text-muted)]">
           <DollarSign size={14} />
           <span className="text-sm font-bold uppercase tracking-widest">Last Price</span>
         </div>
         <div className="flex items-end gap-3">
           <div className="text-2xl font-bold text-white tracking-tight">${price}</div>
-          <div className={`text-sm font-bold flex items-center mb-1 ${isPositive ? 'text-[#22C55E]' : 'text-[#EF4444]'}`}>
+          <div className={`text-sm font-bold flex items-center mb-1 ${isPositive ? 'text-[var(--color-success)]' : 'text-[var(--color-danger)]'}`}>
             {isPositive ? <TrendingUp size={14} className="mr-1" /> : <TrendingDown size={14} className="mr-1" />}
             {change}%
           </div>
@@ -87,7 +87,7 @@ export default function MarketStats({ asset, timeframe }) {
       </div>
       
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-[#4B5563]">
+        <div className="flex items-center gap-2 text-[var(--color-text-muted)]">
           <BarChart3 size={14} />
           <span className="text-sm font-bold uppercase tracking-widest">24h Volume</span>
         </div>
@@ -95,7 +95,7 @@ export default function MarketStats({ asset, timeframe }) {
       </div>
       
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-[#4B5563]">
+        <div className="flex items-center gap-2 text-[var(--color-text-muted)]">
           <PieChart size={14} />
           <span className="text-sm font-bold uppercase tracking-widest">Symbol</span>
         </div>
@@ -103,14 +103,14 @@ export default function MarketStats({ asset, timeframe }) {
       </div>
       
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-[#4B5563]">
+        <div className="flex items-center gap-2 text-[var(--color-text-muted)]">
           <Activity size={14} />
           <span className="text-sm font-bold uppercase tracking-widest">Market Status</span>
         </div>
         <div className="flex items-center gap-2">
-           <div className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse"></div>
+           <div className="w-2 h-2 rounded-full bg-[var(--color-success)] animate-pulse"></div>
            <div className="text-sm font-bold text-white tracking-tight uppercase">Live Feed</div>
-           <div className="text-xs text-[#4B5563] ml-1">Realtime</div>
+           <div className="text-xs text-[var(--color-text-muted)] ml-1">Realtime</div>
         </div>
       </div>
     </div>

@@ -22,6 +22,16 @@ export default function Settings() {
     // remove any selections that are no longer available (e.g. removed coins/horizons)
     setCoins((prev) => prev.filter((c) => AVAILABLE_COINS.includes(c)))
     setHorizons((prev) => prev.filter((h) => AVAILABLE_HORIZONS.includes(h)))
+    
+    // Listen for settings updates from other components (Dashboard, ControlBar)
+    function onSettingsUpdate(e) {
+      const { exchange: ex, coins: c, horizons: h } = e.detail || {}
+      if (ex) setExchange(ex)
+      if (Array.isArray(c) && c.length > 0) setCoins(c)
+      if (Array.isArray(h) && h.length > 0) setHorizons(h)
+    }
+    window.addEventListener('cqai_settings_updated', onSettingsUpdate)
+    return () => window.removeEventListener('cqai_settings_updated', onSettingsUpdate)
   }, [])
 
   function toggleCoin(coin) {
@@ -76,7 +86,7 @@ export default function Settings() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] flex flex-col text-white">
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col text-white">
       <TopBar />
       <main className="flex-1 p-8">
         <div className="max-w-4xl mx-auto">
@@ -92,7 +102,7 @@ export default function Settings() {
                     </div>
                     <div>
                       <h3 id="execute-heading" className="text-lg font-bold text-white">Execute Trade Redirect</h3>
-                      <p className="text-sm text-[#9CA3AF]">Choose where "Execute Trade" buttons open. We support direct Binance and a demo/testnet redirect.</p>
+                      <p className="text-sm text-[var(--color-neutral)]">Choose where "Execute Trade" buttons open. We support direct Binance and a demo/testnet redirect.</p>
                     </div>
                   </div>
 
@@ -100,33 +110,33 @@ export default function Settings() {
                     <button
                       aria-pressed={exchange === 'binance'}
                       onClick={() => setExchange('binance')}
-                      className={`p-4 text-left rounded-lg border transition-all transform-gpu ${exchange === 'binance' ? 'bg-[#07203a] border-primary shadow-lg scale-100' : 'bg-transparent border-[#1f2937] hover:border-[#3B82F6] hover:scale-[1.03]' } active:scale-[0.98] motion-reduce:transform-none`}
+                      className={`p-4 text-left rounded-lg border transition-all transform-gpu ${exchange === 'binance' ? 'bg-[#07203a] border-primary shadow-lg scale-100' : 'bg-transparent border-[#1f2937] hover:border-primary hover:scale-[1.03]' } active:scale-[0.98] motion-reduce:transform-none`}
                     >
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="font-bold text-white">Binance</div>
-                          <div className="text-xs text-[#6B7280]">Open spot trading on Binance</div>
+                          <div className="text-xs text-[var(--color-neutral-dark)]">Open spot trading on Binance</div>
                         </div>
-                        <div className="text-sm text-[#6B7280]">Live</div>
+                        <div className="text-sm text-[var(--color-neutral-dark)]">Live</div>
                       </div>
                     </button>
 
                     <button
                       aria-pressed={exchange === 'binance-demo'}
                       onClick={() => setExchange('binance-demo')}
-                      className={`p-4 text-left rounded-lg border transition-all transform-gpu ${exchange === 'binance-demo' ? 'bg-[#07203a] border-primary shadow-lg scale-100' : 'bg-transparent border-[#1f2937] hover:border-[#3B82F6] hover:scale-[1.03]' } active:scale-[0.98] motion-reduce:transform-none`}
+                      className={`p-4 text-left rounded-lg border transition-all transform-gpu ${exchange === 'binance-demo' ? 'bg-[#07203a] border-primary shadow-lg scale-100' : 'bg-transparent border-[#1f2937] hover:border-primary hover:scale-[1.03]' } active:scale-[0.98] motion-reduce:transform-none`}
                     >
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="font-bold text-white">Binance (Demo)</div>
-                          <div className="text-xs text-[#6B7280]">Opens Binance testnet/demo (futures demo link)</div>
+                          <div className="text-xs text-[var(--color-neutral-dark)]">Opens Binance testnet/demo (futures demo link)</div>
                         </div>
-                        <div className="text-sm text-[#6B7280]">Demo</div>
+                        <div className="text-sm text-[var(--color-neutral-dark)]">Demo</div>
                       </div>
                     </button>
                   </div>
 
-                  <div className="text-xs text-[#6B7280]">More exchanges and broker integrations coming soon.</div>
+                  <div className="text-xs text-[var(--color-neutral-dark)]">More exchanges and broker integrations coming soon.</div>
                 </section>
               </div>
 
@@ -139,19 +149,19 @@ export default function Settings() {
                     </div>
                     <div>
                       <h3 id="display-heading" className="text-lg font-bold text-white">Dashboard Display</h3>
-                      <p className="text-sm text-[#9CA3AF]">Select up to 3 cryptos and up to 3 horizons to appear in your dashboard controls.</p>
+                      <p className="text-sm text-[var(--color-neutral)]">Select up to 3 cryptos and up to 3 horizons to appear in your dashboard controls.</p>
                     </div>
                   </div>
 
                   <div>
-                    <div className="text-sm text-[#6B7280] mb-2">Cryptocurrencies</div>
+                    <div className="text-sm text-[var(--color-neutral-dark)] mb-2">Cryptocurrencies</div>
                     <div className="flex flex-wrap gap-2">
                       {AVAILABLE_COINS.map((c) => (
                         <button
                           key={c}
                           onClick={() => toggleCoin(c)}
                           aria-pressed={coins.includes(c)}
-                      className={`px-3 py-2 text-sm rounded-lg border transition-all transform-gpu ${coins.includes(c) ? 'bg-primary text-white border-primary shadow scale-100' : 'bg-transparent text-[#9CA3AF] border-[#1f2937] hover:border-[#3B82F6] hover:scale-[1.03]'} active:scale-[0.98] motion-reduce:transform-none`}
+                      className={`px-3 py-2 text-sm rounded-lg border transition-all transform-gpu ${coins.includes(c) ? 'bg-primary text-white border-primary shadow scale-100' : 'bg-transparent text-neutral border-[#1f2937] hover:border-primary hover:scale-[1.03]'} active:scale-[0.98] motion-reduce:transform-none`}
                     >
                           {c}
                         </button>
@@ -160,14 +170,14 @@ export default function Settings() {
                   </div>
 
                   <div>
-                    <div className="text-sm text-[#6B7280] mb-2">Horizons</div>
+                    <div className="text-sm text-[var(--color-neutral-dark)] mb-2">Horizons</div>
                     <div className="flex flex-wrap gap-2">
                       {AVAILABLE_HORIZONS.map((h) => (
                         <button
                           key={h}
                           onClick={() => toggleHorizon(h)}
                           aria-pressed={horizons.includes(h)}
-                          className={`px-3 py-2 text-sm rounded-lg border transition-all transform-gpu ${horizons.includes(h) ? 'bg-primary text-white border-primary shadow scale-100' : 'bg-transparent text-[#9CA3AF] border-[#1f2937] hover:border-[#3B82F6] hover:scale-[1.03]'} active:scale-[0.98] motion-reduce:transform-none`}
+                          className={`px-3 py-2 text-sm rounded-lg border transition-all transform-gpu ${horizons.includes(h) ? 'bg-primary text-white border-primary shadow scale-100' : 'bg-transparent text-neutral border-[#1f2937] hover:border-primary hover:scale-[1.03]'} active:scale-[0.98] motion-reduce:transform-none`}
                         >
                           {h}
                         </button>
@@ -183,7 +193,7 @@ export default function Settings() {
 
           {/* Action row outside the card */}
           <div className="flex justify-end items-center gap-4 mt-6">
-            <div className="text-sm text-[#9CA3AF] mr-auto">{message}</div>
+            <div className="text-sm text-[var(--color-neutral)] mr-auto">{message}</div>
             <Button variant="secondary" size="lg" className="min-w-[140px] flex items-center gap-2 transform-gpu hover:scale-[1.03] active:scale-[0.98] motion-reduce:transform-none" onClick={() => {
               localStorage.removeItem('cqai_dashboard_coins')
               localStorage.removeItem('cqai_dashboard_horizons')
@@ -198,7 +208,7 @@ export default function Settings() {
             <Button
               variant="primary"
               size="lg"
-              className="min-w-[160px] flex items-center gap-2 shadow-lg bg-gradient-to-r from-[#2563EB] to-[#3B82F6] border-none hover:opacity-95"
+              className="min-w-[160px] flex items-center gap-2 shadow-lg bg-gradient-to-r from-primary-hover to-primary border-none hover:opacity-95"
               onClick={save}
             >
               <Save className="w-4 h-4" />

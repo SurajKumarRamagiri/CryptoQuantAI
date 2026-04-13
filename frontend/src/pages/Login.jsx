@@ -35,8 +35,8 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B0F14] flex flex-col items-center justify-center p-6 selection:bg-[#3B82F6] selection:text-white">
-      <Link to="/" className="absolute top-8 left-8 text-[#9CA3AF] hover:text-white transition-colors flex items-center gap-2 text-sm font-medium group">
+    <div className="min-h-screen bg-[var(--color-bg)] flex flex-col items-center justify-center p-6 selection:bg-[var(--color-primary)] selection:text-white">
+      <Link to="/" className="absolute top-8 left-8 text-[var(--color-neutral)] hover:text-white transition-colors flex items-center gap-2 text-sm font-medium group">
         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
         Back to Home
       </Link>
@@ -44,7 +44,7 @@ export default function Login() {
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Welcome Back</h1>
-          <p className="text-[#9CA3AF]">Access your high-precision trading signals</p>
+          <p className="text-[var(--color-neutral)]">Access your high-precision trading signals</p>
         </div>
         
         <Card className="p-8">
@@ -76,8 +76,8 @@ export default function Login() {
             </Button>
             
             <div className="relative py-2">
-              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[#2D3748]"></div></div>
-              <div className="relative flex justify-center text-xs uppercase"><span className="bg-[#121821] px-2 text-[#4B5563] font-medium tracking-widest">Or continue with</span></div>
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[var(--color-border)]"></div></div>
+              <div className="relative flex justify-center text-xs uppercase"><span className="bg-[var(--color-card)] px-2 text-[var(--color-text-muted)] font-medium tracking-widest">Or continue with</span></div>
             </div>
             
             <Button variant="secondary" type="button" className="w-full py-3 flex items-center justify-center gap-3">
@@ -92,8 +92,8 @@ export default function Login() {
           </form>
         </Card>
         
-        <p className="text-center mt-8 text-sm text-[#9CA3AF]">
-          Don't have an account? <Link to="/register" className="text-[#3B82F6] font-bold hover:underline underline-offset-4">Create one for free</Link>
+        <p className="text-center mt-8 text-sm text-[var(--color-neutral)]">
+          Don't have an account? <Link to="/register" className="text-[var(--color-primary)] font-bold hover:underline underline-offset-4">Create one for free</Link>
         </p>
       </div>
     </div>

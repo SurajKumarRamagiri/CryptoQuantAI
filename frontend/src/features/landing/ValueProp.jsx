@@ -54,7 +54,7 @@ export default function ValueProp() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Why Traders Choose <span className="text-[#3B82F6]">CryptoQuantAI</span>
           </h2>
-          <p className="text-lg text-[#9CA3AF] max-w-2xl mx-auto text-center leading-relaxed">
+          <p className="text-lg text-[var(--color-neutral)] px-5 py-8 max-w-2xl mx-auto text-center leading-relaxed">
             Institutional-grade tools, now available for every trader. 
             Experience the power of AI-driven market analysis.
           </p>
@@ -83,7 +83,7 @@ export default function ValueProp() {
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#3B82F6] transition-colors duration-300">
                   {feature.title}
                 </h3>
-                <p className="text-[#9CA3AF] leading-relaxed">
+                <p className="text-[var(--color-neutral)] leading-relaxed">
                   {feature.text}
                 </p>
               </div>
@@ -95,19 +95,19 @@ export default function ValueProp() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-[#2D3748]">
           <div className="text-center">
             <div className="text-4xl font-bold text-white mb-2">87%</div>
-            <div className="text-sm text-[#6B7280]">Signal Accuracy</div>
+            <div className="text-sm text-[var(--color-neutral-dark)]">Signal Accuracy</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-white mb-2">15ms</div>
-            <div className="text-sm text-[#6B7280]">Average Latency</div>
+            <div className="text-sm text-[var(--color-neutral-dark)]">Average Latency</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-white mb-2">50K+</div>
-            <div className="text-sm text-[#6B7280]">Trades This Month</div>
+            <div className="text-sm text-[var(--color-neutral-dark)]">Trades This Month</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-white mb-2">$2.4B</div>
-            <div className="text-sm text-[#6B7280]">Volume Tracked</div>
+            <div className="text-sm text-[var(--color-neutral-dark)]">Volume Tracked</div>
           </div>
         </div>
       </div>

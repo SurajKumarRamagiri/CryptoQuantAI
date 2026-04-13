@@ -21,25 +21,32 @@ export default function ChartSection({ asset, timeframe }) {
 
     const chart = createChart(chartContainerRef.current, {
       layout: {
-        background: { type: 'solid', color: '#0B0F14' },
-        textColor: '#9CA3AF',
+        background: { type: 'solid', color: 'var(--color-bg)' },
+        textColor: 'var(--color-neutral)',
       },
       grid: {
-        vertLines: { color: 'rgba(255,255,255,0.05)' },
-        horzLines: { color: 'rgba(255,255,255,0.05)' },
+        vertLines: { color: 'rgba(255,255,255,0.15)' },
+        horzLines: { color: 'rgba(255,255,255,0.15)' },
       },
       crosshair: {
         mode: 1,
-        vertLine: { color: '#3B82F6', width: 1, style: 2 },
-        horzLine: { color: '#3B82F6', width: 1, style: 2 },
+        vertLine: { color: '#3B82F6', width: 1, style: 2, visible: true, labelVisible: true },
+        horzLine: { color: '#3B82F6', width: 1, style: 2, visible: true, labelVisible: true },
       },
       rightPriceScale: {
-        borderColor: '#2D3748',
+        borderColor: 'var(--color-border)',
+        visible: true,
+        scaleMargins: { top: 0.1, bottom: 0.2 },
       },
       timeScale: {
-        borderColor: '#2D3748',
+        borderColor: 'var(--color-border)',
         timeVisible: true,
         secondsVisible: false,
+        visible: true,
+        tickMarkFormatter: (time, tickMark, locale) => {
+          const date = new Date(time * 1000)
+          return date.toLocaleDateString(locale, { month: 'short', day: 'numeric' })
+        },
       },
     })
 
@@ -162,21 +169,21 @@ export default function ChartSection({ asset, timeframe }) {
   }, [asset, timeframe])
 
   return (
-    <Card className="flex-1 flex flex-col" style={{ minHeight: '500px' }}>
-      <div className="p-4 border-b border-[#2D3748] flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-3">
+    <Card className="flex-1 flex flex-col min-h-[400px] md:min-h-[700px]" style={{ overflow: 'hidden' }}>
+      <div className="p-3 md:p-4 border-b border-[var(--color-border)] flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-2 md:gap-3">
           <span className="text-sm font-bold text-white">{asset}/USDT</span>
-          <span className="text-[10px] bg-[#1A2332] text-[#9CA3AF] px-2 py-0.5 rounded border border-[#2D3748] font-bold uppercase">
+          <span className="text-[10px] bg-[var(--color-accent)] text-[#9CA3AF] px-2 py-0.5 rounded border border-[var(--color-border)] font-bold uppercase">
             {timeframe}
           </span>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           {['MA', 'EMA', 'VOL', 'BB'].map(tool => (
             <button
               key={tool}
               aria-label={`Toggle ${tool} overlay`}
-              className="text-[10px] font-bold text-[#4B5563] hover:text-primary transition-colors uppercase tracking-widest px-3 py-2 rounded-md"
+              className="text-[10px] font-bold text-[var(--color-text-muted)] hover:text-primary transition-colors uppercase tracking-widest px-2 md:px-3 py-2 rounded-md"
             >
               {tool}
             </button>
@@ -184,7 +191,7 @@ export default function ChartSection({ asset, timeframe }) {
         </div>
       </div>
       
-      <div className="flex-1 relative bg-[#0B0F14] overflow-hidden" style={{ minHeight: '400px' }}>
+      <div className="flex-1 relative bg-[var(--color-bg)] overflow-hidden min-h-[300px] md:min-h-[600px]">
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <div className="flex flex-col items-center gap-4">

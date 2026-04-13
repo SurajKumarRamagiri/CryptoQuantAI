@@ -14,6 +14,7 @@ build/
 ## Environment
 .env
 .env.*
+!.env.example
 frontend/.env
 backend/.env
 .env.local
@@ -60,3 +61,10 @@ htmlcov/
 *.orig
 coverage/
 *.map
+
+## Agent / Planning
+.planning/
+
+## Generated Artifacts
+artifacts/
+frontend/tasks/
