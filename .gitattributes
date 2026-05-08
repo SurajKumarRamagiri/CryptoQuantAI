@@ -1,0 +1,10 @@
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+backend/models/**/*.joblib filter=lfs diff=lfs merge=lfs -text
+backend/models/**/*.pt filter=lfs diff=lfs merge=lfs -text
+backend/models/**/*.pth filter=lfs diff=lfs merge=lfs -text
+backend/models/**/*.safetensors filter=lfs diff=lfs merge=lfs -text
+backend/models/**/*.{joblib,pt,safetensors} filter=lfs diff=lfs merge=lfs -text
+models/**/*.{joblib,pt,safetensors} filter=lfs diff=lfs merge=lfs -text
